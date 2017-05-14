@@ -1,6 +1,6 @@
 # Participation Guidelines
 
-This project, participating in the Mozilla Global Sprint 2017, respects Mozilla's [community participation guidelines](https://www.mozilla.org/en-US/about/governance/policies/participation/). These guidelines cover our behaviour as participants, facilitators, space wranglers, staff, volunteers, vendors, and anyone else involved in making the MozFest possible.
+This project, participating in the Mozilla Global Sprint 2017, respects Mozilla's [community participation guidelines](https://www.mozilla.org/en-US/about/governance/policies/participation/). These guidelines cover our behaviour as participants, facilitators, space wranglers, staff, volunteers, vendors, and anyone else involved in making the Global Sprint possible.
 
 ## How to treat each other
 

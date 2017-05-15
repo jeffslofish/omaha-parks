@@ -1,7 +1,5 @@
 # Omaha Parks
 
-[ Do you have a [project vision or mission statement](https://mozilla.github.io/open-leadership-training-series/articles/introduction-to-open-leadership/stating-your-project-vision/)? Add it here! Otherwise, add a short descirption of your project.]
-
 We are working with citizen, government, and nonprofit members to make government and civic data accessible to the residents of Omaha so that they can use and create new ways to engage with the city and its leadership and improve Omaha's quality of life.
 
 ![Open Omaha]()

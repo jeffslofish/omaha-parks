@@ -8,7 +8,7 @@ We are working with citizen, government, and nonprofit members to make governmen
 
 ## Getting Started
 
-We are an open source project. Want to help contribute? Are there issues or projects you feel Omaha Parks needs to tacke? Open up an [issue](https://github.com/open-omaha/omaha-parks/issues) using the [issue template](https://github.com/open-omaha/omaha-parks/blob/master/ISSUE_TEMPLATE.md).
+We are an open source project. Want to help contribute? Are there issues or projects you feel Omaha Parks needs to tackle? Open up an [issue](https://github.com/open-omaha/omaha-parks/issues) using the [issue template](https://github.com/open-omaha/omaha-parks/blob/master/ISSUE_TEMPLATE.md).
 
 ## Contributing
 

@@ -8,6 +8,8 @@ We are working with citizen, government, and nonprofit members to make governmen
 
 We're kicking off Omaha Parks at the 2017 Mozilla Global Sprint! Come join us for two days, June 1-2, 2017, from 9am-5pm. We'll be doing some project planning in the early phase, and starting work on our web application.
 
+Feel free to get in touch with us in our **chatroom** [https://gitter.im/open-omaha/](https://gitter.im/open-omaha/).
+
 ## Getting Started
 
 We are an open source project. Want to help contribute? Are there issues or projects you feel Omaha Parks needs to tackle? Open up an [issue](https://github.com/open-omaha/omaha-parks/issues) using the [issue template](https://github.com/open-omaha/omaha-parks/blob/master/ISSUE_TEMPLATE.md).
@@ -23,3 +25,7 @@ This project adheres to a [code of conduct](CODE_OF_CONDUCT.md). By participatin
 ## MozSprint
 
 Join us at the [Mozilla Global Sprint](http://mozilla.github.io/global-sprint/) June 1-2, 2017! We'll be gathering in-person at sites around the world and online to collaborate on this project and learn from each other. [Get your #mozsprint tickets now](https://ti.to/Mozilla/global-sprint-omaha)!
+
+### How the Sprint will be organized 
+
+We will be using Github to organize the work for the Sprint. Please use it! And spread the word to people who might want to participate. We will be hosting a site at the Community Engagement Center at the University of Nebraska at Omaha, but you are more than welcome to participate remotely as well. 

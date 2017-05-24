@@ -28,4 +28,12 @@ Join us at the [Mozilla Global Sprint](http://mozilla.github.io/global-sprint/) 
 
 ### How the Sprint will be organized 
 
-We will be using Github to organize the work for the Sprint. Please use it! And spread the word to people who might want to participate. We will be hosting a site at the Community Engagement Center at the University of Nebraska at Omaha, but you are more than welcome to participate remotely as well. 
+We will be using Github to organize the work for the Sprint. Please use it! And spread the word to people who might want to participate. Feel free to invite others to participate. We will be hosting a site at the Community Engagement Center at the University of Nebraska at Omaha, but you are more than welcome to participate remotely as well. 
+
+Tweet about the event using the handle @openomaha -- photos are good, too! :camera:
+
+You can find things to work on by:
+
+- submitting pull requests
+- raising issues for discussion using the Issues tab
+- chat with others in our chatroom [https://gitter.im/open-omaha/Lobby](https://gitter.im/open-omaha/Lobby)

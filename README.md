@@ -8,6 +8,8 @@ We are working with citizen, government, and nonprofit members to make governmen
 
 We're kicking off Omaha Parks at the 2017 Mozilla Global Sprint! Come join us for two days, June 1-2, 2017, from 9am-5pm. We'll be doing some project planning in the early phase, and starting work on our web application.
 
+[![Gitter](https://img.shields.io/gitter/room/TechnologyAdvice/Stardust.svg)](https://gitter.im/open-omaha/)
+
 Feel free to get in touch with us in our **chatroom** [https://gitter.im/open-omaha/](https://gitter.im/open-omaha/).
 
 ## Getting Started

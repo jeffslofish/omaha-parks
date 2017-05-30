@@ -2,13 +2,14 @@
 
 ## June 1
 
-- 9a :coffee:
+- 9am :coffee:
 - Morning: planning 
   - park amenities
   - tools / apps / platform
   - deciding on work: coding / design / field work / storytelling
-- Afternoon: sprint
+- Afternoon: :coffee: & Sprint!
 
 ## June 2
 
-- 9a :coffee:
+- 9am :coffee:
+- Afternoon: :coffee: & Sprint!

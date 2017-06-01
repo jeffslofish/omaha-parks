@@ -1,57 +1,63 @@
-var gulp 		= require('gulp');
-var sass 		= require('gulp-sass');
-var browserSync = require('browser-sync').create();
-var useref 		= require('gulp-useref');
-var uglify 		= require('gulp-uglify');
-var gulpIf 		= require('gulp-if');
-var runSequence = require('run-sequence');
+/*!
+ * gulp
+ * $ npm install gulp-ruby-sass gulp-autoprefixer gulp-cssnano gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev
+ */
 
-// Start browserSync server
-gulp.task('browserSync', function() {
-  browserSync({
-    server: {
-      baseDir: 'app'
-    }
-  })
-})
+// Load plugins
+var gulp = require('gulp'),
+    sass = require('gulp-ruby-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
+    cssnano = require('gulp-cssnano'),
+    uglify = require('gulp-uglify'),
+    imagemin = require('gulp-imagemin'),
+    rename = require('gulp-rename'),
+    concat = require('gulp-concat'),
+    notify = require('gulp-notify'),
+    cache = require('gulp-cache'),
+    livereload = require('gulp-livereload'),
+    del = require('del'),
+    browserSync = require('browser-sync').create();;
 
-gulp.task('sass', function() {
-  return gulp.src('app/css/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
-    .pipe(sass().on('error', sass.logError)) // Passes it through a gulp-sass, log errors to console
-    .pipe(gulp.dest('app/css')) // Outputs it in the css folder
+// Styles
+gulp.task('styles', function() {
+  return sass('app/css/style.scss', { style: 'expanded' })
+    .pipe(autoprefixer('last 2 version'))
+    .pipe(gulp.dest('dist/css'))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(cssnano())
+    .pipe(gulp.dest('dist/css'))
+    .pipe(notify({ message: 'Styles task complete' }));
 });
 
-// Watchers
-// gulp.task('watch', function() {
-//   gulp.watch('app/scss/**/*.scss', ['sass']);
-//   gulp.watch('app/*.html', browserSync.reload);
-//   gulp.watch('app/js/**/*.js', browserSync.reload);
-// })
-
-// Optimization Tasks 
-// ------------------
-
-// Optimizing CSS and JavaScript 
-gulp.task('useref', function() {
-
-  return gulp.src('app/*.html')
-    .pipe(useref())
-    .pipe(gulpIf('*.js', uglify()))
-    .pipe(gulp.dest('dist'));
+// Scripts
+gulp.task('scripts', function() {
+  return gulp.src('app/js/**/*.js')
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest('dist/js'))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/js'))
+    .pipe(notify({ message: 'Scripts task complete' }));
 });
 
-// Cleaning 
+// Clean
 gulp.task('clean', function() {
-  return del.sync('dist').then(function(cb) {
-    return cache.clearAll(cb);
-  });
-})
+  return del(['dist/css', 'dist/js']);
+});
 
-// Build Sequences
-// ---------------
-// 'gulp serve' -- open site in browser and watch for changes
-// in source files and update them when needed
-gulp.task('serve', (done) => {
+// Default task
+gulp.task('default', ['clean'], function() {
+  gulp.start('styles', 'scripts', 'watch');
+});
+
+// Watch
+gulp.task('watch', function() {
+
+  gulp.watch('app/css/**/*.scss', ['styles']);
+  gulp.watch('app/js/**/*.js', ['scripts']);
+  gulp.watch('app/*.html');
+
+  // Create LiveReload server
   browserSync.init({
     // tunnel: true,
     // open: false,
@@ -63,16 +69,8 @@ gulp.task('serve', (done) => {
       baseDir: 'app'
     }
   });
-  done();
 
-  // watch various files for changes
-  gulp.watch('app/css/**/*.scss', ['sass']);
-  gulp.watch('app/*.html');
-  gulp.watch('app/js/**/*.js');
+  // Watch any files in dist/, reload on change
+  gulp.watch(['dist/**']).on('change', livereload.changed);
+
 });
-
-gulp.task('default', ['sass', 'useref', 'serve']);
-
-// gulp.task('default', ['watch', 'scripts', 'images']);
-
-

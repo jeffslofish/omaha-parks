@@ -19,24 +19,22 @@
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
 
     <link href="css/style.css" rel="stylesheet"/>
+    <script src="js/main.js"></script>
 
   </head>
+
   <body>
-    <script src="js/main.js"></script>
 
     <div id="map"></div>
 
     <div id="panel">
     <h3>Neighborhoods</h3>
-    <select name="relation" id="relationSelect">
-      <option value="within">Within<options>
-      <option value="contains">Contains<options>
-      <option value="intersects">Intersects<options>
-      <option value="overlaps">Overlaps<options>
-    </select>
-    <select name="geometry" id="geometrySelect">
-      <option value="polygon">Polygon<options>
-    </select>
+      <select name="relation" id="relationSelect">
+        <option value="within">Northwest Omaha<options>
+        <option value="contains">West Omaha<options>
+        <option value="intersects">Boys Town<options>
+        <option value="overlaps">Florence<options>
+      </select>
 
     <h3>Features</h3>
       <select name="features" id="featureSelect">
@@ -47,10 +45,10 @@
       </select>
 
     <h3>Trails</h3>
-    <input type="checkbox" name="walkingtrails" value="Walking Trails"> Walking Trails<br>
-    <input type="checkbox" name="bikingtrails" value="Biking Trails"> Biking Trails
+      <input type="checkbox" name="walkingtrails" value="Walking Trails"> Walking Trails<br>
+      <input type="checkbox" name="bikingtrails" value="Biking Trails"> Biking Trails
 
-  </div>
+    </div>
     
   </body>
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Load Leaflet from CDN-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js"></script>
+
+    <!-- Load Esri Leaflet locally, after cloning this repository -->
+    <script src="https://unpkg.com/esri-leaflet@2.0.8"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+
+    <!-- geolocate plugin -->
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
+    <!--[if lt IE 9]>
+      <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
+    <![endif]-->
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
+
+    <link href="css/style.css" rel="stylesheet"/>
+
+  </head>
+  <body>
+    <script src="js/main.js"></script>
+
+    <div id="map"></div>
+
+    <div id="panel">
+    <h3>Neighborhoods</h3>
+    <select name="relation" id="relationSelect">
+      <option value="within">Within<options>
+      <option value="contains">Contains<options>
+      <option value="intersects">Intersects<options>
+      <option value="overlaps">Overlaps<options>
+    </select>
+    <select name="geometry" id="geometrySelect">
+      <option value="polygon">Polygon<options>
+    </select>
+
+    <h3>Features</h3>
+      <select name="features" id="featureSelect">
+      <option value="playground">Play structure<options>
+      <option value="surface">Surface<options>
+      <option value="basketball">Basketball court<options>
+      <option value="picnic">Picnic area<options>
+      </select>
+
+    <h3>Trails</h3>
+    <input type="checkbox" name="walkingtrails" value="Walking Trails"> Walking Trails<br>
+    <input type="checkbox" name="bikingtrails" value="Biking Trails"> Biking Trails
+
+  </div>
+    
+  </body>
+</html>

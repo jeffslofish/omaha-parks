@@ -45,8 +45,19 @@ parks.bindPopup(function(e){
   return L.Util.template(popupTemplate, e.feature.properties)
 });
 
+// collect geometries into an object so we can reference them later
+  var geometries = {
+    polygon: parks,
+  };
 
-var legend = L.control({position: 'bottomright'});
+   // get references to our <select> elements
+  var relationship = document.getElementById('relationSelect');
+  var geometry = document.getElementById('geometrySelect');
+
+  var previousIds = [];
+
+// Legend
+var legend = L.control({position: 'bottomleft'});
 
 legend.onAdd = function (map) {
 
@@ -57,10 +68,54 @@ legend.onAdd = function (map) {
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
-            grades[i] +'<br>';
+            grades[i] + " - " + labels[i] + "</br>";
     }
 
     return div;
 };
 
 legend.addTo(map);
+
+
+// Helper functions
+
+// Add geolocate plugin
+L.control.locate().addTo(map);
+
+// Checkbox input for trails
+// add the event handler
+function handleCommand() {
+   alert("Clicked, checked = " + this.checked);
+}
+
+// reset all features back to their regularly defined styles
+  function reset(){
+    for (var i = previousIds.length - 1; i >= 0; i--) {
+      parks.resetStyle(previousIds[i]);
+    };
+  }
+
+  // query the API and highlight features
+  function query(){
+    reset();
+
+    // lookup our input geometry
+    var inputGeometry = geometries[geometry.value];
+
+    // query the service executing the selected relation with the selected input geometry
+    parks.query()[relationship.value](inputGeometry).ids(function(error, ids){
+      previousIds = ids;
+      for (var i = ids.length - 1; i >= 0; i--) {
+        parks.setFeatureStyle(ids[i], { color: '#70ca49', weight: 2 });
+      };
+    });
+  }
+
+  // query when an input changes
+  geometry.addEventListener('change', query);
+  relationship.addEventListener('change', query);
+
+  // once all parks have loaded run the default query
+  parks.once('load', function(){
+    query();
+  });

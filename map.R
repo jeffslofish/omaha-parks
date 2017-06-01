@@ -1,6 +1,5 @@
 library(shiny)
 library(leaflet)
-library(RColorBrewer)
 library(tidyverse)
 library(DT)
 
@@ -15,12 +14,13 @@ ui <- bootstrapPage(
   )
 ) # end bootstrapPage
 
+
 server <- function(input, output, session) {
   
-  output$map <- leaflet::renderLeaflet({
-    leaflet::leaflet(parks) %>% 
-      leaflet::addProviderTiles(providers$HikeBike) %>% 
-      leaflet::addMarkers()
+  output$map <- renderLeaflet({
+    leaflet(parks) %>% 
+      addProviderTiles(providers$OpenStreetMap) %>% 
+      addMarkers()
   }) # end output$map
   
   in_bounding_box <- function(data, latitude, longitude, bounds) {
@@ -37,13 +37,13 @@ server <- function(input, output, session) {
     }
   }) # end reactive
   
-  output$tbl <- DT::renderDataTable({
-    DT::datatable(data_map(), filter = 'top', extension = "Scroller", style = "default", 
-                  class="cell-border stripe", width = "100%", rownames = FALSE, selection = "single",
+  output$tbl <- renderDataTable({
+    datatable(data_map(), filter = 'bottom', extension = "Scroller", style = "default", 
+                  class="cell-border stripe", width = "100%", rownames = TRUE, selection = "single",
                   options = list(deferRender = TRUE, scrollY = 300, scroller = TRUE, dom = "tp", stateSave = TRUE)
                   ) # end datatable 
   }) # end output$tbl
   
 } # end server
 
-shinyApp(ui = ui, server = server)
+shinyApp(ui, server)

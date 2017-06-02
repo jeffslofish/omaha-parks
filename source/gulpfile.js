@@ -16,7 +16,8 @@ var gulp = require('gulp'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
     del = require('del'),
-    browserSync = require('browser-sync').create();;
+    browserSync = require('browser-sync').create(),
+    sequence = require('run-sequence');;
 
 // Styles
 gulp.task('styles', function() {
@@ -47,7 +48,8 @@ gulp.task('clean', function() {
 
 // Default task
 gulp.task('default', ['clean'], function() {
-  gulp.start('styles', 'scripts', 'watch');
+  gulp.start('styles', 'scripts');
+  // sequence('styles', 'scripts', 'watch');
 });
 
 // Watch
@@ -57,7 +59,10 @@ gulp.task('watch', function() {
   gulp.watch('app/js/**/*.js', ['scripts']);
   gulp.watch('app/*.html');
 
-  // Create LiveReload server
+  // Watch any files in dist/, reload on change
+  gulp.watch(['dist/**']).on('change', livereload.changed);
+
+    // Create LiveReload server
   browserSync.init({
     // tunnel: true,
     // open: false,
@@ -70,7 +75,20 @@ gulp.task('watch', function() {
     }
   });
 
-  // Watch any files in dist/, reload on change
-  gulp.watch(['dist/**']).on('change', livereload.changed);
-
 });
+
+
+gulp.task('serve', function() {
+  // Create LiveReload server
+  browserSync.init({
+    // tunnel: true,
+    // open: false,
+    port: 8000,
+    ui: {
+      port: 8001
+    },
+    server: {
+      baseDir: 'app'
+    }
+  });
+})

@@ -31,13 +31,6 @@ var courts = L.esri.featureLayer({
     }
 }).addTo(map);
 
-var playgrounds = L.esri.featureLayer({
-  url: "https://gis.dogis.org/arcgis/rest/services/Parks/Parks_Asset_Collector_Project/FeatureServer/2",
-  style: function () {
-    return { color: "black", weight: 2 };
-  }
-}).addTo(map);
-
 // Park popup information
 var popupTemplate = "<h3>{NAME}</h3><br><small>Address: {FULLADDR}<small>";
 

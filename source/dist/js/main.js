@@ -31,10 +31,10 @@ var courts = L.esri.featureLayer({
     }
 }).addTo(map);
 
-var playgrounds = L.esri.featureLayer({
-  url: "https://gis.dogis.org/arcgis/rest/services/Parks/Parks_Asset_Collector_Project/FeatureServer/2",
+var biketrails = L.esri.featureLayer({
+  url: "https://gis.dogis.org/arcgis/rest/services/Bike_Trails_and_Routes/MapServer/3",
   style: function () {
-    return { color: "black", weight: 2 };
+    return { color: "black", weight: 3 };
   }
 }).addTo(map);
 

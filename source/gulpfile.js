@@ -88,7 +88,7 @@ gulp.task('serve', function() {
       port: 8001
     },
     server: {
-      baseDir: 'app'
+      baseDir: 'dist'
     }
   });
 })

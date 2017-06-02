@@ -6,7 +6,9 @@ L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
 var parks = L.esri.featureLayer({
   url: "https://gis.dogis.org/arcgis/rest/services/Parks/Parks_Outline/MapServer/0",
   style: function () {
-    return { color: "#70ca49", weight: 2 };
+    return { color: "#afe7ae", 
+    weight: 0, 
+    fillOpacity: 0.75 };
   }
 }).addTo(map);
 
@@ -34,16 +36,35 @@ var courts = L.esri.featureLayer({
 var biketrails = L.esri.featureLayer({
   url: "https://gis.dogis.org/arcgis/rest/services/Bike_Trails_and_Routes/MapServer/3",
   style: function () {
-    return { color: "black", weight: 3 };
+    return { color: "#333", weight: 2 };
   }
-}).addTo(map);
+});
+
+var communityGardensLayer = L.esri.featureLayer({
+  url: "https://gis.dogis.org/arcgis/rest/services/DC_Health/Gardens_and_Markets/MapServer/0",
+  pointToLayer: function (geojson, latlng) {
+      return L.circleMarker(latlng, {
+        radius: 3,
+        fillColor: "steelblue",
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8,
+      });
+    }
+});
+
 
 // Park popup information
 var popupTemplate = "<h3>{NAME}</h3><br><small>Address: {FULLADDR}<small>";
+var popupTemplateCourts = "<h3>{NAME}</h3><br><small>Court type: {SPORT}<small>";
 
 parks.bindPopup(function(e){
   return L.Util.template(popupTemplate, e.feature.properties)
 });
+courts.bindPopup(function(e){
+  return L.Util.template(popupTemplateCourts, e.feature.properties)
+})
 
 // collect geometries into an object so we can reference them later
   var geometries = {
@@ -77,16 +98,40 @@ legend.onAdd = function (map) {
 legend.addTo(map);
 
 
-// Helper functions
+// Helper functions -----------------------------------------------------------------
 
 // Add geolocate plugin
 L.control.locate().addTo(map);
 
-// Checkbox input for trails
-// add the event handler
-function handleCommand() {
-   alert("Clicked, checked = " + this.checked);
-}
+// ------------------------
+// Toggle trails on and off
+// ------------------------
+var biketrailstoggle = document.getElementById("bikingtrails");
+    
+// listen for the 'change' event on the checkbox and toggle the layer on and off
+biketrailstoggle.addEventListener('change', function(e){
+  if(biketrailstoggle.checked){
+    biketrails.addTo(map);
+  } else {
+    map.removeLayer(biketrails);
+  }
+});
+
+var communitygardenstoggle = document.getElementById("communitygardens");
+    
+// listen for the 'change' event on the checkbox and toggle the layer on and off
+communitygardenstoggle.addEventListener('change', function(e){
+  if(communitygardenstoggle.checked){
+    communityGardensLayer.addTo(map);
+  } else {
+    map.removeLayer(communityGardensLayer);
+  }
+});
+
+
+// ------------------------
+// Esri spatial queries
+// ------------------------
 
 // reset all features back to their regularly defined styles
   function reset(){

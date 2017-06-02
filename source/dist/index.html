@@ -27,25 +27,51 @@
     <div id="map"></div>
 
     <div id="panel">
-      <h3>Neighborhoods</h3>
-      <select name="relation" id="relationSelect">
-        <option value="within">Northwest Omaha<options>
-        <option value="contains">West Omaha<options>
-        <option value="intersects">Boys Town<options>
-        <option value="overlaps">Florence<options>
-      </select>
+     <h1>Omaha Parks</h1>
 
-      <h3>Features</h3>
-        <select name="features" id="featureSelect">
+      <h3>Neighborhoods</h3>
+        <select name="relation" id="neighborhoodsSelect">
+          <option value="within">Select...<options>
+          <option value="within">Northwest Omaha<options>
+          <option value="contains">West Omaha<options>
+          <option value="intersects">Boys Town<options>
+          <option value="overlaps">Florence<options>
+        </select>
+
+      <h3>Sports</h3>
+        <select name="features" id="sportsSelect">
+        <option value="within">Select...<options>
         <option value="playground">Play structure<options>
         <option value="surface">Surface<options>
         <option value="basketball">Basketball court<options>
         <option value="picnic">Picnic area<options>
         </select>
 
+      <h3>Playgrounds</h3>
+        <select name="features" id="playgroundsSelect">
+        <option value="within">Select...<options>
+        <option value="playground">Play structure<options>
+        <option value="surface">Surface<options>
+        <option value="basketball">Basketball court<options>
+        <option value="picnic">Picnic area<options>
+        </select>
+
+      <h3>Facilities</h3>
+        <select name="features" id="facilitiesSelect">
+        <option value="within">Select...<options>
+        <option value="playground">Play structure<options>
+        <option value="surface">Surface<options>
+        <option value="basketball">Basketball court<options>
+        <option value="picnic">Picnic area<options>
+        </select>
+
+      <h3>Speciality</h3>
+        <input type="checkbox" id="communitygardens" name="communitygardens" value="Community Gardens"> Community Gardens
+
       <h3>Trails</h3>
-      <input type="checkbox" name="walkingtrails" value="Walking Trails"> Walking Trails<br>
-      <input type="checkbox" name="bikingtrails" value="Biking Trails"> Biking Trails
+        <input type="checkbox" id="walkingtrails" name="walkingtrails" value="Walking Trails"> Walking Trails<br>
+        <input type="checkbox" id="bikingtrails" name="bikingtrails" value="Biking Trails"> Biking Trails
+
     </div> <!-- end:panel -->
 
   <script src="js/main.min.js"></script>

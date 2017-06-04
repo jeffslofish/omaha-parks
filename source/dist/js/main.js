@@ -104,7 +104,7 @@ legend.addTo(map);
 L.control.locate().addTo(map);
 
 // ------------------------
-// Toggle trails on and off
+// Toggle features on and off
 // ------------------------
 var biketrailstoggle = document.getElementById("bikingtrails");
     
@@ -128,11 +128,45 @@ communitygardenstoggle.addEventListener('change', function(e){
   }
 });
 
+//TODO: For some reason once you uncheck parks, if you check them again, they won't appear in the map
+var parkstoggle = document.getElementById("parks");
+
+// listen for the 'change' event on the checkbox and toggle the layer on and off
+parkstoggle.addEventListener('change', function(e){
+  if(parkstoggle.checked){
+    parks.addTo(map);
+  } else {
+    map.removeLayer(parks);
+  }
+});
+
+var playgroundstoggle = document.getElementById("playgrounds");
+
+// listen for the 'change' event on the checkbox and toggle the layer on and off
+playgroundstoggle.addEventListener('change', function(e){
+  if(playgroundstoggle.checked){
+    playgrounds.addTo(map);
+  } else {
+    map.removeLayer(playgrounds);
+  }
+});
+
+var courtstoggle = document.getElementById("courts");
+
+// listen for the 'change' event on the checkbox and toggle the layer on and off
+courtstoggle.addEventListener('change', function(e){
+  if(courtstoggle.checked){
+    courts.addTo(map);
+  } else {
+    map.removeLayer(courts);
+  }
+});
 
 // ------------------------
 // Esri spatial queries
 // ------------------------
 
+/* TODO: Re-enable this code after "geometry" is defined (it was causing a javascript error).
 // reset all features back to their regularly defined styles
   function reset(){
     for (var i = previousIds.length - 1; i >= 0; i--) {
@@ -164,3 +198,4 @@ communitygardenstoggle.addEventListener('change', function(e){
   parks.once('load', function(){
     query();
   });
+*/

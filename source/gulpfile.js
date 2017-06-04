@@ -26,8 +26,7 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('dist/css'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(cssnano())
-    .pipe(gulp.dest('dist/css'))
-    .pipe(notify({ message: 'Styles task complete' }));
+    .pipe(gulp.dest('dist/css'));
 });
 
 // Scripts
@@ -37,27 +36,31 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('dist/js'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(uglify())
-    .pipe(gulp.dest('dist/js'))
-    .pipe(notify({ message: 'Scripts task complete' }));
+    .pipe(gulp.dest('dist/js'));
+});
+
+// HTML
+gulp.task('html', function() {
+  return gulp.src('app/*.html')
+    .pipe(gulp.dest('dist'));
 });
 
 // Clean
 gulp.task('clean', function() {
-  return del(['dist/css', 'dist/js']);
+  return del(['dist']);
 });
 
 // Default task
 gulp.task('default', ['clean'], function() {
-  gulp.start('styles', 'scripts');
+  gulp.start('styles', 'scripts', 'html');
   // sequence('styles', 'scripts', 'watch');
 });
 
 // Watch
 gulp.task('watch', function() {
-
   gulp.watch('app/css/**/*.scss', ['styles']);
   gulp.watch('app/js/**/*.js', ['scripts']);
-  gulp.watch('app/*.html');
+  gulp.watch('app/*.html', ['html']);
 
   // Watch any files in dist/, reload on change
   gulp.watch(['dist/**']).on('change', livereload.changed);
@@ -74,7 +77,6 @@ gulp.task('watch', function() {
       baseDir: 'app'
     }
   });
-
 });
 
 
@@ -91,4 +93,4 @@ gulp.task('serve', function() {
       baseDir: 'dist'
     }
   });
-})
+});

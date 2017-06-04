@@ -31,39 +31,20 @@
 
       <h3>Neighborhoods</h3>
         <select name="relation" id="neighborhoodsSelect">
-          <option value="within">Select...<options>
-          <option value="within">Northwest Omaha<options>
-          <option value="contains">West Omaha<options>
-          <option value="intersects">Boys Town<options>
-          <option value="overlaps">Florence<options>
+          <option value="">Select...</option>
+          <option value="all">All</option>
+          <option value="nw-omaha">Northwest Omaha</option>
+          <option value="w-omaha">West Omaha</option>
+          <option value="boys-town">Boys Town</option>
+          <option value="florence">Florence</option>
         </select>
 
-      <h3>Sports</h3>
-        <select name="features" id="sportsSelect">
-        <option value="within">Select...<options>
-        <option value="playground">Play structure<options>
-        <option value="surface">Surface<options>
-        <option value="basketball">Basketball court<options>
-        <option value="picnic">Picnic area<options>
-        </select>
-
-      <h3>Playgrounds</h3>
-        <select name="features" id="playgroundsSelect">
-        <option value="within">Select...<options>
-        <option value="playground">Play structure<options>
-        <option value="surface">Surface<options>
-        <option value="basketball">Basketball court<options>
-        <option value="picnic">Picnic area<options>
-        </select>
+      <h3>Parks</h3>
+        <input type="checkbox" id="parks" name="parks" value="Parks" checked="checked"> Parks
 
       <h3>Facilities</h3>
-        <select name="features" id="facilitiesSelect">
-        <option value="within">Select...<options>
-        <option value="playground">Play structure<options>
-        <option value="surface">Surface<options>
-        <option value="basketball">Basketball court<options>
-        <option value="picnic">Picnic area<options>
-        </select>
+        <input type="checkbox" id="playgrounds" name="playgrounds" value="Playgrounds" checked="checked"> Playgrounds<br>
+        <input type="checkbox" id="courts" name="courts" value="Courts" checked="checked"> Courts
 
       <h3>Speciality</h3>
         <input type="checkbox" id="communitygardens" name="communitygardens" value="Community Gardens"> Community Gardens
@@ -74,6 +55,6 @@
 
     </div> <!-- end:panel -->
 
-  <script src="js/main.min.js"></script>
+  <script src="js/main.js"></script>
   </body>
 </html>
